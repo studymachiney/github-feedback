@@ -48,7 +48,6 @@ function createGitHubRequest(path: string, token: string, opts: any = {}) {
 
 export async function fetchGitHub(path: string, token: string, opts: any = {}) {
   let req = await createGitHubRequest(path, token, opts);
-  console.log(req.status);
   if (req.status === 401) {
     await setAccessToken();
     req = await createGitHubRequest(path, accessToken, opts);
@@ -95,11 +94,6 @@ export async function fetchIssuePageData(id: string) {
     ),
     fetchGitHub('/repos/studymachiney/github-feedback', accessToken),
   ]);
-
-  console.log({
-    issue, comments, repoDetails
-
-  })
 
   console.log(`[Next.js] Fetching data for /${id}`);
   console.log(`[Next.js] [${id}] Comments: ${comments.length}`);
