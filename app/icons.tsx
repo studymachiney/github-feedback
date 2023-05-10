@@ -1,9 +1,7 @@
-import styles from '../styles/Home.module.scss';
-
 export function StarIcon() {
   return (
     <svg
-      className={styles.starIcon}
+      className="w-4 h-4 ml-4 mr-1 text-white custom-icon"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
     >
@@ -18,7 +16,7 @@ export function StarIcon() {
 export function ForkIcon() {
   return (
     <svg
-      className={styles.forkIcon}
+      className="w-4 h-4 mr-1 text-white custom-icon"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
     >
@@ -38,7 +36,7 @@ export function ForkIcon() {
 export function GitHubIcon() {
   return (
     <svg
-      className={styles.githubIcon}
+      className="w-5 h-5 mr-1 text-white custom-icon"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 32 32"
     >
@@ -50,7 +48,7 @@ export function GitHubIcon() {
 export function IssueIcon() {
   return (
     <svg
-      className={styles.issueIcon}
+      className="custom-icon mr-3 mt-0.5 text-gray-500"
       viewBox="0 0 16 16"
       version="1.1"
       width="16"
@@ -69,7 +67,7 @@ export function IssueIcon() {
 export function CommentIcon() {
   return (
     <svg
-      className={styles.commentIcon}
+      className="w-4 h-4 mr-1 text-gray-500"
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -84,7 +82,7 @@ export function CommentIcon() {
 export function LinkIcon() {
   return (
     <svg
-      className={styles.commentIcon}
+      className="w-4 h-4 mr-1 text-gray-500"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
     >

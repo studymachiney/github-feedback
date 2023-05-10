@@ -1,7 +1,7 @@
-import { createHmac } from 'crypto'
-import { Request, Response } from 'express'
+import { NextApiRequest, NextApiResponse } from 'next'
+import { createHmac } from 'node:crypto'
 
-export default async function handleWebhook(req: Request, res: Response & Record<string, any>) {
+export default async function handleWebhook(req: NextApiRequest, res: NextApiResponse) {
   const body = await getRawBody(req)
   if (!body) {
     res.status(400).send('Bad request (no body)')
@@ -14,7 +14,6 @@ export default async function handleWebhook(req: Request, res: Response & Record
   const signature = req.headers['x-hub-signature-256']
   const computedSignature =
     'sha256=' + createHmac('sha256', secret!).update(body).digest('hex')
-
   if (computedSignature === signature) {
     console.log(
       'event',
@@ -42,7 +41,7 @@ export default async function handleWebhook(req: Request, res: Response & Record
 
 }
 
-function getRawBody(req: Request) {
+function getRawBody(req: NextApiRequest) {
   return new Promise<string>((resolve, reject) => {
     let bodyChunks: Uint8Array[] = []
     req.on('end', () => {

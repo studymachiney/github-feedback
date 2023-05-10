@@ -22,7 +22,7 @@ function getGitHubJWT() {
       iss: process.env.GITHUB_APP_ID,
       exp: Math.floor(Date.now() / 1000) + 60 * 10, // 10 minutes is the max
     },
-    process.env.GITHUB_APP_PK_PEM,
+    process.env.GITHUB_APP_PK_PEM.replaceAll('\\n', '\n'),
     {
       algorithm: 'RS256',
     }
@@ -48,6 +48,7 @@ function createGitHubRequest(path: string, token: string, opts: any = {}) {
 
 export async function fetchGitHub(path: string, token: string, opts: any = {}) {
   let req = await createGitHubRequest(path, token, opts);
+  console.log(req.status);
   if (req.status === 401) {
     await setAccessToken();
     req = await createGitHubRequest(path, accessToken, opts);
@@ -93,7 +94,12 @@ export async function fetchIssuePageData(id: string) {
       accessToken
     ),
     fetchGitHub('/repos/studymachiney/github-feedback', accessToken),
-  ])
+  ]);
+
+  console.log({
+    issue, comments, repoDetails
+
+  })
 
   console.log(`[Next.js] Fetching data for /${id}`);
   console.log(`[Next.js] [${id}] Comments: ${comments.length}`);

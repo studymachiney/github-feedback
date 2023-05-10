@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .custom-icon {
+    fill: currentColor;
+    display: inline-block;
+    overflow: visible;
+    vertical-align: text-bottom;
+  }
+}
